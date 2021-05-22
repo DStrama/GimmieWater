@@ -27,6 +27,7 @@ export class PlantsComponent implements OnInit {
   }
 
   addPlant(plant: Plant) {
-    this.plantsService.addTask(plant).subscribe((plant) => (this.plants.push(plant)));
+    console.log(plant)
+    // this.plantsService.addTask(plant).subscribe((plant) => (this.plants.push(plant)));
   }
 }

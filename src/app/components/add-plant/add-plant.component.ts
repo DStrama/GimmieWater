@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
 import { Plant } from '../../model/Plant';
+import { UiService } from '../../services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-plant',
@@ -9,38 +11,47 @@ import { Plant } from '../../model/Plant';
 })
 export class AddPlantComponent implements OnInit {
   @Output() onAddPlant: EventEmitter<Plant> = new EventEmitter();
+
   name: string;
+  sensorid: string;
+  photo: File;
+  log: number;
+  lat: number;
+  showAddPlant: boolean;
+  subscription: Subscription;
+
   selectedFile = null;
   title = 'google-maps';
   private map: google.maps.Map
 
-  constructor() { }
+  constructor(private uiService: UiService) { 
+    this.subscription = this.uiService.onToggle().subscribe(value => this.showAddPlant = value)
+  }
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'AIzaSyAlSnSOCI4GOWxDClWY78Aln2_Sdg-GvhM'
+      apiKey: 'AIzaSyD6bI619ccwd2nsQDKghzNZeagZLa01-LE'
     })
 
     loader.load().then(() => {
-      new google.maps.Map(document.getElementById("map") as HTMLElement,{
+      new google.maps.Map(document.getElementById("map") as HTMLElement, {
         center: {
-          lat: 51.233334, 
-          lng: 	6.783333
+          lat: 52.237049, 
+          lng: 	21.017532
         },
-        zoom: 6
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.HYBRID
       })
     })
   }
 
   onFileSelected(event) {
-    this.selectedFile = event.target.fils[0];
+    this.photo = event.target.fils[0];
   }
 
   onUpload() {
 
   }
-
-
 
   onSubmit() {
     if(!this.name) {
@@ -49,12 +60,19 @@ export class AddPlantComponent implements OnInit {
     }
 
     const newPlant = {
-
-    }
+      name: this.name,
+      sensorId: this.sensorid,
+      log: this.log,
+      lat: this.lat,
+      photo: this.photo
+    };
 
     this.onAddPlant.emit(newPlant)
 
     this.name = '';
+    this.lat = 0.0;
+    this.lat = 0.0;
+    // this.photo = null;
 
   }
 }

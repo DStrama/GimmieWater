@@ -2,3 +2,18 @@
     height: 500px;
     width: 700px;
 }
+
+#map-wrapper {
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+    padding: 30px;
+    border-radius: 5px;
+  }

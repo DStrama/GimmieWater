@@ -2,8 +2,8 @@
     <header>
         <h1>My Plants</h1>
         <app-button 
-            color="#53C351" 
-            text="Add" 
+            color="{{ showAddPlant ? 'red' : '#53C351' }}"
+            text="{{ showAddPlant ? 'Close' : 'Add'}}" 
             (btnClick)="toggleAddPlant()"
         ></app-button>
     </header>
