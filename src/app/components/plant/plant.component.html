@@ -1,0 +1,6 @@
+<div class="plant">
+    <h2>{{plant.name}} <fa-icon (click)="(onEdit(plant))" [icon]="faEdit"></fa-icon></h2>
+    <p>{{plant.description}}</p>
+    <p>{{plant.hummidity}}</p>
+    <app-progress-bar [progress]="80" [total]="100"></app-progress-bar>
+</div>

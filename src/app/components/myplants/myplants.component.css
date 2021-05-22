@@ -1,0 +1,22 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+/* div {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+  
+h1 {
+    text-align: left;
+}
+  
+button {
+    position: absolute;
+    right: 0;
+} */

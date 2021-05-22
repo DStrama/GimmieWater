@@ -1,0 +1,6 @@
+<app-add-plant (onAddPlant)="addPlant($event)"></app-add-plant>
+<app-plant 
+    *ngFor="let plant of plants" 
+    [plant]="plant"
+    (onEditPlant)="editPlant(plant)">
+</app-plant>
