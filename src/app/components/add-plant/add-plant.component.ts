@@ -30,7 +30,7 @@ export class AddPlantComponent implements OnInit {
 
   ngOnInit(): void {
     let loader = new Loader({
-      apiKey: 'AIzaSyD6bI619ccwd2nsQDKghzNZeagZLa01-LE'
+      apiKey: 'AIzaSyBha0kMhq7UM-8n4YFqy71nYPmw86vypnY'
     })
 
     loader.load().then(() => {

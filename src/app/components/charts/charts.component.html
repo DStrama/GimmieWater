@@ -1,1 +1,9 @@
 <p>charts works!</p>
+<tr *ngFor="let hum of humidity">
+  <td>{{ hum.sensor | json }}</td>
+  <td>{{ hum.humidityList | json}}</td>
+</tr>
+
+<div id="divChart">
+  <canvas id="myChart"></canvas>
+</div>
