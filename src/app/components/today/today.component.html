@@ -1,0 +1,44 @@
+<main>
+<div class="mt-5 ml">
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm-2">
+      <div *ngIf="weatherNow">
+        <div class = "time"><p class="date">{{ currentTime | date:"HH:mm, d MMM" }}</p></div>
+        <div class="location "><p class="location"> {{location.name}}, {{location.country}}</p></div>
+        <div clss="temp" id="parentDiv">
+          <div class="myImage"><img src="assets/images/{{ weatherNow.weather[0].icon}}.png" alt="" ></div>
+          <div id="heading" ><p class="text"> {{ weatherNow.main.temp | number:'1.0-0' }}°C </p></div>
+        </div>
+
+        <div class="details">
+          <p class="main">
+            Feels like {{ weatherNow.main.feels_like | number:'1.0-0'}}°C. {{ weatherNow.weather[0].main}}. {{weatherNow.weather[0].description}}
+          </p>
+          <div class="sub">
+            Humidity: {{weatherNow.main.humidity}}%
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-sm-5">
+      <div class="timeline">
+        <h1>3-hour Forecast</h1>
+        <div id="chart" #chart></div>
+      </div>
+    </div>
+
+    <div class="col-sm-5">
+      <h1>5-day Forecast</h1>
+      <div id="chart2" #chart></div>
+    </div>
+
+    <app-future></app-future>
+
+  </div>
+</div>
+
+</div>
+</main>

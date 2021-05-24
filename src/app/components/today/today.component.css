@@ -1,0 +1,101 @@
+@import "~bootstrap/dist/css/bootstrap.min.css"
+
+.timeline{
+  display:grid;
+  grid-template-columns: repeat(8, 3rem);
+}
+
+h1{
+  grid-column: 1/-1;
+}
+
+.ml{
+margin-left:25px;
+}
+
+
+.sub{
+border-left: thin rgba(234, 101, 63) solid;
+padding: .7rem;
+
+}
+
+.main{
+margin-top:4px;
+ text-transform: capitalize;
+ font-size: 17px;
+
+}
+
+.icon-future{
+  height: 2rem;
+  padding-left: 2rem;
+}
+
+.main-future{
+  display: grid;
+  grid-template-columns: repeat(5, 6rem);
+}
+
+.date{
+ font-size: 17px;
+ color: rgba(234, 101, 63);
+}
+
+.text{
+font-weight: 500;
+}
+
+.jumbotron{
+width: 90vw;
+background-color: white;
+
+}
+
+.location{
+font-weight: 500;
+}
+
+.myImage {
+    float: left;
+    width: 100px;
+    height: 100px;
+
+}
+
+#parentDiv:after {
+         content: " ";
+         display: block;
+         clear: both;
+     }
+
+
+
+#heading {
+  float: left;
+  width: 70px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+
+}
+
+.main{
+  float:bottom !important;
+}
+
+
+#wrapper {
+    width: 500px;
+    border: 1px solid black;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+#first {
+    width: 300px;
+    float:left; /* add this */
+    border: 1px solid red;
+}
+#second {
+    border: 1px solid green;
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+}

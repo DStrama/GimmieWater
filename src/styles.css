@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+/*@import '../node_modules/jquery/dist/jquery.js';*/
+
+/*@import "font-awesome/css/font-awesome.min.css";*/
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import url('https://code.jquery.com/jquery-3.3.1.slim.min.js');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js');
 
 * {
   box-sizing: border-box;
