@@ -8,3 +8,9 @@
     display: flex;
     justify-content: center;
 }
+
+agm-map {
+    padding-top: 50px;
+    width: 90vw;
+    height: 90vh;
+}

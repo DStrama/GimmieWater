@@ -17,3 +17,8 @@
     padding: 30px;
     border-radius: 5px;
   }
+
+agm-map {
+    width: 800px;
+    height: 400px;
+}

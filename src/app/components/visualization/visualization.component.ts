@@ -1,5 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Loader } from '@googlemaps/js-api-loader';
+import { PlantControllerService } from '../../services/plantController.service';
+import { Plant } from '../../model/plant';
+
+class Coordinate {
+  latitude: number;
+  longitude: number;
+  text: string;
+
+  constructor(lat, lng, text) {
+      this.latitude = lat;
+      this.longitude = lng;
+      this.text = text;
+  }
+}
 
 @Component({
   selector: 'app-visualization',
@@ -7,25 +21,20 @@ import { Loader } from '@googlemaps/js-api-loader';
   styleUrls: ['./visualization.component.css']
 })
 export class VisualizationComponent implements OnInit {
-  title = 'google-maps';
 
-  constructor() { }
+  plants: Plant[] = [];
+
+  title = 'google-maps';
+  lng: number = 21.017532;
+  lat: number = 52.237049;
+  zoom: number = 17;
+  // iconUrl: string = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LACMTA_Circle_Red_Line.svg/600px-LACMTA_Circle_Red_Line.svg.png';
+
+  constructor(private plantsService: PlantControllerService) { }
 
   ngOnInit(): void {
-    let loader = new Loader({
-      apiKey: 'AIzaSyBha0kMhq7UM-8n4YFqy71nYPmw86vypnY'
-    })
-
-    loader.load().then(() => {
-      new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: {
-          lat: 52.237049, 
-          lng: 	21.017532
-        },
-        zoom: 10,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-      })
-    })
+    this.plantsService.getPlantsUsingGET().subscribe(data => {
+        this.plants = data;
+    });
   }
-
 }

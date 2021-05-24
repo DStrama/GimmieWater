@@ -1,4 +1,14 @@
 <div id="map-wrapper">
-    <div class="full"id="map"></div>
+    <!-- [iconUrl]="iconUrl" -->
+    <agm-map [latitude]="lat" [longitude]="lng" [scrollwheel]="false" [zoom]="zoom" [mapTypeId]="'satellite'" [fitBounds]="true">
+        <agm-marker *ngFor="let marker of plants" [latitude]="marker.sensor!.latitude" [longitude]="marker.sensor!.longitude" [agmFitBounds]="true">
+        <agm-info-window>
+            <strong>
+                name: {{marker.name}} 
+                sensorId: {{marker.sensor.sensorId}}
+                <!-- Hummidity: {{}} -->
+            </strong>
+          </agm-info-window>
+    </agm-marker>
+    </agm-map>
 </div>
-

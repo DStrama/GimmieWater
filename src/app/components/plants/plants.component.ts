@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlantService } from '../../services/plant.service';
-import { Plant } from '../../model/Plant';
+import { PlantControllerService } from '../../services/plantController.service';
+import { Plant } from '../../model/plant';
 
 @Component({
   selector: 'app-plants',
@@ -8,14 +8,15 @@ import { Plant } from '../../model/Plant';
   styleUrls: ['./plants.component.css']
 })
 export class PlantsComponent implements OnInit {
+
   plants: Plant[] = [];
 
-  constructor(private plantsService: PlantService) { }
+  constructor(private plantsService: PlantControllerService) { }
 
   ngOnInit(): void {
-    this.plantsService.getPlants().subscribe( (plants) => (
-      this.plants = plants
-    ));
+    this.plantsService.getPlantsUsingGET().subscribe(data => {
+        this.plants = data;
+    });
   }
 
   editPlant(plant: Plant) {
@@ -23,11 +24,11 @@ export class PlantsComponent implements OnInit {
   }
 
   deletePlant(plant: Plant) {
-    this.plantsService.deletePlant(plant).subscribe( () => (this.plants = this.plants.filter( (p) => p.id !== plant.id )));
+    // this.plantsService.deletePlant(plant).subscribe( () => (this.plants = this.plants.filter( (p) => p.id !== plant.id )));
   }
 
   addPlant(plant: Plant) {
     console.log(plant)
-    // this.plantsService.addTask(plant).subscribe((plant) => (this.plants.push(plant)));
+    this.plantsService.createPlantUsingPOST(plant).subscribe( (plant) => this.plants.push(plant));
   }
 }

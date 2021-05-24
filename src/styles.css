@@ -37,6 +37,7 @@ body {
 
 .form-control {
   margin: 20px 0;
+  border: none;
 }
 
 .form-control label {

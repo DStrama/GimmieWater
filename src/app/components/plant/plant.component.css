@@ -1,7 +1,8 @@
 .plant {
-    margin: 5px;
+    margin: 15px;
     padding: 10px 20px;
     cursor: pointer;
+    background: #f4f4f4;
   }
   
   .plant h2 {
@@ -19,8 +20,4 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-  }
-
-  .two {
-    background-image: url('http://placehold.it/200x200');
   }

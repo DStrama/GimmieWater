@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,8 +24,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { VisualizationComponent } from './components/visualization/visualization.component';
 import { RegisterComponent } from './components/register/register.component';
-
-import {HumidityControllerService} from './services/humidityController.service'
+import { HumidityControllerService } from './services/humidityController.service';
+import { PlantControllerService } from './services/plantController.service';
 
 @NgModule({
   declarations: [
@@ -52,9 +53,12 @@ import {HumidityControllerService} from './services/humidityController.service'
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBha0kMhq7UM-8n4YFqy71nYPmw86vypnY'
+    })
   ],
-  providers: [HumidityControllerService],
+  providers: [HumidityControllerService, PlantControllerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

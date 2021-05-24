@@ -1,6 +1,7 @@
 <div class="plant">
-    <h2>{{plant.name}} <fa-icon (click)="(onEdit(plant))" [icon]="faEdit"></fa-icon></h2>
+    <h2>{{plant.name}} <fa-icon (click)="(onEdit(plant))" [ngStyle]="{ color: 'red'}" [icon]="faTimes"></fa-icon></h2>
     <div class="plantImage two"></div>
-    <p>{{plant.hummidity}}</p>
+    <p>Sensor id: {{plant.sensor!.sensorId}}</p>
+    <!-- <p>Hummidity: {{plant.sensor!.last}}</p> -->
     <app-progress-bar [progress]="80" [total]="100"></app-progress-bar>
 </div>

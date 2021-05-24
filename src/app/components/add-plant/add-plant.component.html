@@ -9,10 +9,12 @@
     </div>
     <div class="form-control">
         <label for="text">Plant image</label>
-        <input type="file" name="photo" [(ngModel)]="photo" (change)="onFileSelected($event)"/>
+        <input type="text" name="photourl" [(ngModel)]="photourl" id="text" placeholder="Enter photo url"/>
     </div>
     <div class="form-control" id="map-wrapper">
-        <div class="map-view" id="map"></div>
+        <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [scrollwheel]="false" [zoom]="zoom" [mapTypeId]="'satellite'">
+            <agm-marker *ngIf="locationChosen" [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
     </div>
     <input type="submit" value="Save Plant" class="btn btn-block"/>
 </form>

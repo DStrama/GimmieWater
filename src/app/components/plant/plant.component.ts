@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Plant } from '../../model/Plant';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Plant } from '../../model/plant';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-plant',
@@ -12,11 +12,12 @@ export class PlantComponent implements OnInit {
   @Input() plant: Plant;
   @Output() onEditPlant: EventEmitter<Plant> = new EventEmitter()
 
-  faEdit = faEdit;
+  faTimes = faTimes;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.plant.sensor);
   }
 
   onEdit(plant) {
