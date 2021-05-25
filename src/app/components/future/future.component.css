@@ -1,0 +1,9 @@
+.main-future{
+  display: grid;
+  grid-template-columns: repeat(5, 6rem);
+}
+
+.icon-future{
+  height: 2rem;
+  padding-left: 2rem;
+}
