@@ -1,6 +1,6 @@
 .plant {
     margin: 15px;
-    padding: 10px 20px;
+    padding: 20px;
     cursor: pointer;
     background: #f4f4f4;
   }
@@ -21,3 +21,10 @@
     background-position: center center;
     background-size: cover;
   }
+
+.photo {
+  height: 150px;
+  width: 150px;
+  border-radius:75px;
+  margin: 15px;
+}

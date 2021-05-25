@@ -16,5 +16,6 @@
      photoUrl?: string;
      plantId?: number;
      sensor?: Sensor;
+     lastHumidity?: number;
  }
  

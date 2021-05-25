@@ -20,10 +20,11 @@ export class PlantsComponent implements OnInit {
   }
 
   editPlant(plant: Plant) {
-
+    console.log('sss');
   }
 
   deletePlant(plant: Plant) {
+    console.log('sss');
     // this.plantsService.deletePlant(plant).subscribe( () => (this.plants = this.plants.filter( (p) => p.id !== plant.id )));
   }
 

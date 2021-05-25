@@ -55,7 +55,7 @@ import { PlantControllerService } from './services/plantController.service';
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBha0kMhq7UM-8n4YFqy71nYPmw86vypnY'
+      apiKey: 'AIzaSyDDZdP0G-7cHR0vRMtYudeqLu02qcUSyDI'
     })
   ],
   providers: [HumidityControllerService, PlantControllerService],

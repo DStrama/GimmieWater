@@ -13,14 +13,13 @@ export class PlantComponent implements OnInit {
   @Output() onEditPlant: EventEmitter<Plant> = new EventEmitter()
 
   faTimes = faTimes;
-
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.plant.sensor);
   }
 
-  onEdit(plant) {
+  onDelete(plant) {
     this.onEditPlant.emit(plant);
   }
 

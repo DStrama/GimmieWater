@@ -62,6 +62,7 @@ export class AddPlantComponent implements OnInit {
     this.lng = 21.017532;
     this.locationChosen = false;
     this.sensorid = '';
+    this.photourl = '';
   }
 
   onChoseLocation(event) {
