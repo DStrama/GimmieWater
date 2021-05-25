@@ -130,6 +130,8 @@ export class ChartsComponent implements OnInit {
         measurements.push(data[i]!.humidityList[j].humidityAverage);
         time.push(data[i]!.humidityList[j].hour);
       }
+                console.log("moje dane")
+                console.log(time)
       myArray.push({time: time, moisture: measurements, sensorName: data[i]!.sensor.sensorId});
      // nameList.push(data[i]!.sensor.sensorId)
     }
@@ -156,6 +158,7 @@ export class ChartsComponent implements OnInit {
             measurements.push(data_daily[i]!.humidityList[j].humidityAverage);
             time.push(data_daily[i]!.humidityList[j].day);
           }
+
           myArrayDaily.push({time: time, moisture: measurements, sensorName: data_daily[i]!.sensor.sensorId});
         }
 

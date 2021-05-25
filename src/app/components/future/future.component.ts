@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../../services/forecast.service';
+import { DailyForecastService } from '../../services/daily-forecast.service';
 import { pluck } from 'rxjs/operators';
 import { Chart } from 'node_modules/chart.js';
 
@@ -18,8 +19,6 @@ export class FutureComponent implements OnInit {
     )
     .subscribe(data=>{
       this.futureForecast(data)
-      console.log("tutaj moje dane")
-      console.log(data)
     })
   }
 
@@ -27,8 +26,6 @@ export class FutureComponent implements OnInit {
     for(let i=0; i<data.length; i=i+8){
       this.weatherData.push(data[i]);
     }
-    console.log("tu drugie")
-    console.log(this.weatherData);
 
     var day = [];
     var temperature = [];
@@ -36,11 +33,12 @@ export class FutureComponent implements OnInit {
     var rainDay = [];
 
     for(let k=0; k<this.weatherData.length; k++){
+
         var date = new Date(this.weatherData[k].dt_txt);
         var month = date.getUTCMonth()+1;
-        console.log(date.getUTCDate());
         day.push(date.getUTCDate()+".0"+month);
         temperature.push(this.weatherData[k].main.temp);
+        console.log(this.weatherData)
 
         if (this.weatherData[k].rain == null) { //Executes if variable is null OR undefined
           rainNormalizedValue.push(0);
@@ -50,11 +48,12 @@ export class FutureComponent implements OnInit {
           rainDay.push(temp);
         }
         else{
-          rainNormalizedValue.push(4*this.weatherData[k].rain["3h"]);
+          rainNormalizedValue.push(this.weatherData[k].rain["3h"]);
           var temp = [];
           temp.push(date.getUTCDate()+".0"+month);
-          temp.push(this.weatherData[k].pop*100+"%");
+          temp.push(100*Math.round(this.weatherData[k].pop * 100) / 100+"%");
           temp.push(this.weatherData[k].rain["3h"]+"mm/h");
+
           rainDay.push(temp);
         }
     }

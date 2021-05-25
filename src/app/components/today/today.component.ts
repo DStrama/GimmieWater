@@ -49,7 +49,7 @@ export class TodayComponent implements OnInit{
 
     if(this.dateRange().start.getTime() <= apiDate && this.dateRange().to.getTime() >= apiDate)
       this.weatherNow = forecast;
-      console.log(this.weatherNow);
+      //console.log(this.weatherNow);
     }
 
     var time = [];
@@ -63,20 +63,21 @@ export class TodayComponent implements OnInit{
         //var day = date.getDate();
         time.push(hour+":00");
         temperature.push(today.list.slice(0,7)[k].main.temp);
-        console.log(today.list.slice(0,7))
+       // console.log(today.list.slice(0,7))
 
                 if (today.list.slice(0,7)[k].rain == null) { //Executes if variable is null OR undefined
                   rainNormalizedValue.push(0);
                   var temp = [];
                   temp.push(hour+":00");
-                  temp.push(today.list.slice(0,7)[k].pop*100+"%");
+                  temp.push(100*Math.round(today.list.slice(0,7)[k].pop * 100) / 100+"%");
                   rainDay.push(temp);
                 }
                 else{
                   rainNormalizedValue.push(today.list.slice(0,7)[k].rain["3h"]);
                   var temp = [];
                   temp.push(hour+":00");
-                  temp.push(today.list.slice(0,7)[k].pop*100+"%");
+                  temp.push(100*Math.round(today.list.slice(0,7)[k].pop * 100) / 100+"%")
+                  //temp.push(today.list.slice(0,7)[k].pop*100+"%");
                   temp.push(today.list.slice(0,7)[k].rain["3h"]+"mm/h");
                   rainDay.push(temp);
                 }
