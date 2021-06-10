@@ -116,22 +116,36 @@ export class ChartsComponent implements OnInit {
     var myArray: MeasurementsList[] = [];
     var chartsContainerElement = document.getElementById("charts-container");
     //chartsContainerElement.style.cssText = "display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center; margin-top: 40px;"
-    console.log(chartsContainerElement);
 
     for(let i=0; i< data.length; i++){
       this.SENSORS_DATA.push(data[i]);
       //console.log(data[i]!.humidityList);
+      var measurements_smaller = [];
+      var measurements_bigger = [];
+      var time_smaller = [];
+      var time_bigger = [];
       var measurements = [];
       var time = [];
       //var names = [];
+      var d = new Date();
+      var currentHour = d.getHours();
 
       for(let j=0; j<data[i]!.humidityList.length; j++){
         //console.log(data[i]!.humidityList[j].humidityAverage);
-        measurements.push(data[i]!.humidityList[j].humidityAverage);
-        time.push(data[i]!.humidityList[j].hour);
+        if(data[i]!.humidityList[j].hour <= currentHour){
+          measurements_smaller.push(data[i]!.humidityList[j].humidityAverage);
+          time_smaller.push(data[i]!.humidityList[j].hour+":00");
+        }
+        else{
+          measurements_bigger.push(data[i]!.humidityList[j].humidityAverage);
+          time_bigger.push(data[i]!.humidityList[j].hour+":00");
+        }
+        //measurements.push(data[i]!.humidityList[j].humidityAverage);
+        //time.push(data[i]!.humidityList[j].hour+":00");
+        time = time_bigger.concat(time_smaller);
+        measurements = measurements_bigger.concat(measurements_smaller);
       }
-                console.log("moje dane")
-                console.log(time)
+
       myArray.push({time: time, moisture: measurements, sensorName: data[i]!.sensor.sensorId});
      // nameList.push(data[i]!.sensor.sensorId)
     }
@@ -156,7 +170,7 @@ export class ChartsComponent implements OnInit {
           for(let j=0; j<data_daily[i]!.humidityList.length; j++){
             //console.log(data[i]!.humidityList[j].humidityAverage);
             measurements.push(data_daily[i]!.humidityList[j].humidityAverage);
-            time.push(data_daily[i]!.humidityList[j].day);
+            time.push(data_daily[i]!.humidityList[j].day+".05");
           }
 
           myArrayDaily.push({time: time, moisture: measurements, sensorName: data_daily[i]!.sensor.sensorId});

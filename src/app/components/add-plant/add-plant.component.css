@@ -7,6 +7,7 @@
     width:100%;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .container {
@@ -21,4 +22,8 @@
 agm-map {
     width: 800px;
     height: 400px;
+}
+
+.form-control{
+margin-top:50px;
 }

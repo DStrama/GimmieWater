@@ -16,8 +16,7 @@ const routes: Routes = [
   { path: 'visualization', component: VisualizationComponent },
   { path: 'charts', component: ChartsComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'weather', component: TodayComponent},
-  { path: 'weather2', component: FutureComponent}
+  { path: 'weather', component: TodayComponent}
 ];
 
 @NgModule({

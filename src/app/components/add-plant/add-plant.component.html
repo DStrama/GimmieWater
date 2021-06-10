@@ -1,20 +1,23 @@
 <form *ngIf="showAddPlant" class="add-form" (ngSubmit)="onSubmit()">
+  <div classx="d-flex">
     <div class="form-control">
-        <label for="text">Plant name</label>
-        <input type="text" name="name" [(ngModel)]="name" id="text" placeholder="Enter Name"/>
-    </div>
-    <div class="form-control">
-        <label for="text">Sensor id</label>
-        <input type="text" name="sensorid" [(ngModel)]="sensorid" id="text" placeholder="Enter Sensor id"/>
+      <label for="text">Plant name</label>
+      <input type="text" name="name" [(ngModel)]="name" id="text" placeholder="Enter Name"/>
     </div>
     <div class="form-control">
-        <label for="text">Plant image</label>
-        <input type="text" name="photourl" [(ngModel)]="photourl" id="text" placeholder="Enter photo url"/>
+      <label for="text">Sensor id</label>
+      <input type="text" name="sensorid" [(ngModel)]="sensorid" id="text" placeholder="Enter Sensor id"/>
     </div>
-    <div class="form-control" id="map-wrapper">
-        <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [scrollwheel]="false" [zoom]="zoom" [mapTypeId]="'satellite'">
-            <agm-marker *ngIf="locationChosen" [latitude]="lat" [longitude]="lng"></agm-marker>
-        </agm-map>
+    <div class="form-control">
+      <label for="text">Plant image</label>
+      <input type="text" name="photourl" [(ngModel)]="photourl" id="text" placeholder="Enter photo url"/>
     </div>
-    <input type="submit" value="Save Plant" class="btn btn-block"/>
+    <div id="map-wrapper">
+      <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onChoseLocation($event)" [scrollwheel]="false"
+               [zoom]="zoom" [mapTypeId]="'satellite'">
+        <agm-marker *ngIf="locationChosen" [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+    <input type="submit" value="Save Plant" class="btn btn-block" id="add_button"/>
+  </div>
 </form>

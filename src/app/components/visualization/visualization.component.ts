@@ -25,8 +25,8 @@ export class VisualizationComponent implements OnInit {
   plants: Plant[] = [];
 
   title = 'google-maps';
-  lng: number = 21.017532;
-  lat: number = 52.237049;
+  lng: number = 21.000981;
+  lat: number = 52.211840;
   zoom: number = 17;
   // iconUrl: string = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LACMTA_Circle_Red_Line.svg/600px-LACMTA_Circle_Red_Line.svg.png';
 

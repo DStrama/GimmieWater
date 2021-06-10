@@ -28,7 +28,7 @@ export class AddPlantComponent implements OnInit {
   title = 'google-maps';
   private map: google.maps.Map
 
-  constructor(private uiService: UiService) { 
+  constructor(private uiService: UiService) {
     this.subscription = this.uiService.onToggle().subscribe(value => this.showAddPlant = value)
   }
 
@@ -47,7 +47,7 @@ export class AddPlantComponent implements OnInit {
       latitude: this.lat,
       sensorId: this.sensorid
     };
-    
+
     const newPlant: Plant = {
       name: this.name,
       sensor: sensor,
@@ -58,11 +58,15 @@ export class AddPlantComponent implements OnInit {
     this.onAddPlant.emit(newPlant)
 
     this.name = '';
-    this.lat = 52.237049;
-    this.lng = 21.017532;
+    this.lat = 52.211840;
+    this.lng = 21.000981;
     this.locationChosen = false;
     this.sensorid = '';
     this.photourl = '';
+
+    var x = document.getElementById("add_button");
+
+
   }
 
   onChoseLocation(event) {

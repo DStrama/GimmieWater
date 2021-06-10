@@ -25,7 +25,6 @@ import { LoginComponent } from './components/login/login.component';
 import { VisualizationComponent } from './components/visualization/visualization.component';
 import { RegisterComponent } from './components/register/register.component';
 
-import {HumidityControllerService} from './services/humidityController.service';
 import { WeatherComponent } from './components/weather/weather.component';
 import { TodayComponent } from './components/today/today.component';
 import { FutureComponent } from './components/future/future.component'

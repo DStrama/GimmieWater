@@ -4,7 +4,7 @@
     cursor: pointer;
     background: #f4f4f4;
   }
-  
+
   .plant h2 {
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-  
+
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -27,4 +27,29 @@
   width: 150px;
   border-radius:75px;
   margin: 15px;
+}
+
+
+#image {
+    float: left;
+    width: 100px;
+    height: 100px;
+
+}
+
+#parentDiv:after {
+         content: " ";
+         display: block;
+         clear: both;
+     }
+
+
+
+#description {
+  float: left;
+  width: 70px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+
 }

@@ -1,7 +1,10 @@
 <div class="plant">
+  <div id="">
     <h2>{{plant.name}} <fa-icon (click)="(onDelete(plant))" [ngStyle]="{ color: 'red'}" [icon]="faTimes"></fa-icon></h2>
     <img class="photo" [src]="plant.photoUrl">
     <p>Sensor id: {{plant.sensor!.sensorId}}</p>
     <p>Hummidity: {{plant!.lastHumidity}}</p>
+  </div>
+    <div id=""><p>{{plant.description}}</p></div>
     <app-progress-bar [progress]="plant!.lastHumidity" [total]="1000"></app-progress-bar>
 </div>

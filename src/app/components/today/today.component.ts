@@ -1,74 +1,75 @@
 import { Component, OnInit} from '@angular/core';
-import { ForecastService } from '../../services/forecast.service'
-import { Chart } from 'node_modules/chart.js';
-import {AfterViewInit, ElementRef, ViewChild} from '@angular/core';
+                                  import { ForecastService } from '../../services/forecast.service'
+                                  import { Chart } from 'node_modules/chart.js';
+                                  import {AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 
-@Component({
-  selector: 'app-today',
-  templateUrl: './today.component.html',
-  styleUrls: ['./today.component.css']
-})
-export class TodayComponent implements OnInit{
-  @ViewChild('chart') myDiv: ElementRef;
-  timeline = [];
-  weatherNow: any;
-  currentTime = new Date();
-  location: any;
+                                  @Component({
+                                    selector: 'app-today',
+                                    templateUrl: './today.component.html',
+                                    styleUrls: ['./today.component.css']
+                                  })
+                                  export class TodayComponent implements OnInit{
+                                    @ViewChild('chart') myDiv: ElementRef;
+                                    timeline = [];
+                                    weatherNow: any;
+                                    currentTime = new Date();
+                                    location: any;
 
-  constructor(private forecastService: ForecastService) { }
+                                    constructor(private forecastService: ForecastService) { }
 
-  ngOnInit(): void {
-    this.forecastService.getWeatherForecast().subscribe(data=>{
-    this.getTodayForecast(data)
-    })
+                                    ngOnInit(): void {
+                                      this.forecastService.getWeatherForecast().subscribe(data=>{
+                                      this.getTodayForecast(data)
+                                      })
 
-  }
+                                    }
 
-  dateRange(){
-    const start = new Date();
-    const to = new Date(start);
-    to.setHours(to.getHours()+2, to.getMinutes() + 59, to.getSeconds() +59);
-    return { start, to }
-  }
+                                    dateRange(){
+                                      const start = new Date();
+                                      const to = new Date(start);
+                                      to.setHours(to.getHours()+2, to.getMinutes() + 59, to.getSeconds() +59);
+                                      return { start, to }
+                                    }
 
-  getTodayForecast(today:any){
-    this.location = today.city;
-    type MeasurementsList = {time: Date[]; temperature: number[]};
-    var myArray: MeasurementsList[] = [];
-
-
-    for(const forecast of today.list.slice(0,8)){
-      this.timeline.push({
-        time: forecast.dt_txt,
-        temp: forecast.main.temp,
-        pop: forecast.pop
-    });
-
-    const apiDate = new Date(forecast.dt_txt).getTime();
+                                    getTodayForecast(today:any){
+                                      this.location = today.city;
+                                      type MeasurementsList = {time: Date[]; temperature: number[]};
+                                      var myArray: MeasurementsList[] = [];
 
 
-    if(this.dateRange().start.getTime() <= apiDate && this.dateRange().to.getTime() >= apiDate)
-      this.weatherNow = forecast;
-      //console.log(this.weatherNow);
-    }
+                                      for(const forecast of today.list.slice(0,8)){
+                                        this.timeline.push({
+                                          time: forecast.dt_txt,
+                                          temp: forecast.main.temp,
+                                          pop: forecast.pop
+                                      });
 
-    var time = [];
-    var temperature = [];
-    var rainNormalizedValue = [];
-    var rainDay = [];
+                                      const apiDate = new Date(forecast.dt_txt).getTime();
 
-    for(let k=0; k<today.list.slice(0,7).length; k++){
-        var date = new Date(today.list.slice(0,7)[k].dt_txt);
-        var hour = date.getHours();
-        //var day = date.getDate();
-        time.push(hour+":00");
-        temperature.push(today.list.slice(0,7)[k].main.temp);
-       // console.log(today.list.slice(0,7))
 
-                if (today.list.slice(0,7)[k].rain == null) { //Executes if variable is null OR undefined
-                  rainNormalizedValue.push(0);
-                  var temp = [];
-                  temp.push(hour+":00");
+                                      if(this.dateRange().start.getTime() <= apiDate && this.dateRange().to.getTime() >= apiDate)
+                                        this.weatherNow = forecast;
+                                        //console.log(this.weatherNow);
+                                      }
+
+                                      var time = [];
+                                      var temperature = [];
+                                      var rainNormalizedValue = [];
+                                      var rainDay = [];
+
+                                      for(let k=0; k<today.list.slice(0,7).length; k++){
+                                          var date = new Date(today.list.slice(0,7)[k].dt_txt);
+                                          var hour = date.getHours();
+                                          //var day = date.getDate();
+                                          time.push(hour+":00");
+                                          temperature.push(today.list.slice(0,7)[k].main.temp);
+                                          console.log("Codzienn egodziny")
+                                          console.log(today.list.slice(0,7))
+
+                                                  if (today.list.slice(0,7)[k].rain == null) { //Executes if variable is null OR undefined
+                                                    rainNormalizedValue.push(0);
+                                                    var temp = [];
+                                                    temp.push(hour+":00");
                   temp.push(100*Math.round(today.list.slice(0,7)[k].pop * 100) / 100+"%");
                   rainDay.push(temp);
                 }
